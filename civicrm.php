@@ -1077,6 +1077,7 @@ class CiviCRM_For_WordPress {
       'cid' => NULL,
       'gid' => NULL,
       'cs' => NULL,
+      'force' => NULL,
       ),
       $atts
     ) );
@@ -1084,6 +1085,7 @@ class CiviCRM_For_WordPress {
     $args = array(
       'reset' => 1,
       'id'    => $id,
+      'force' => $force,
     );
 
     switch ( $component ) {
@@ -1129,6 +1131,9 @@ class CiviCRM_For_WordPress {
         }
         elseif ($mode == 'view') {
           $args['q'] = 'civicrm/profile/view';
+        }
+        elseif ($mode == 'search') {
+          $args['q'] = 'civicrm/profile';
         }
         else {
           $args['q'] = 'civicrm/profile/create';
@@ -1405,6 +1410,7 @@ class CiviCRM_For_WordPress {
                 <input type="radio" name="profile_mode" value="create" checked="checked"/> <?php _e( 'Create', 'civicrm-wordpress' ); ?>
                 <input type="radio" name="profile_mode" value="edit" /> <?php _e( 'Edit', 'civicrm-wordpress' ); ?>
                 <input type="radio" name="profile_mode" value="edit" /> <?php _e( 'View', 'civicrm-wordpress' ); ?>
+                <input type="radio" name="profile_mode" value="search" /> <?php _e( 'Search/Public Directory', 'civicrm-wordpress' ); ?>
                  </div>
               </span>
 
